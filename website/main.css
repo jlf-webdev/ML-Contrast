@@ -1,7 +1,17 @@
+body {
+    margin: 0;
+    background-color: rgb(228, 228, 228);
+}
+
+.color-picker {
+    text-align: center;
+    padding-top: 1rem;
+}
+
 #container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 30vh;
+    background-color: #293DDC;
+    display: grid;
+    text-align: center;
+    padding: 2rem 2rem 1rem 2rem;
 }
 

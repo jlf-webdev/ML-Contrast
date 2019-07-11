@@ -9,8 +9,16 @@
 </head>
 <body>
 
-    <input type="color" value="#ff0000" />
-    <div id="container">This app will use its brain to apply the best contrast.</div>
+    <div id="container">
+        <p>In this first version of the website, the machine learning part is already 
+            trained to apply the best contrast.<br><br>
+        Further versions will include an integrated color picker and a user interface 
+            to generate the brain training datas.<br><br>
+        Click the button below to set background color.
+        </p>
+        <div class="color-picker"><input type="color"></div>
+    </div>
+    
     
     <script src=" https://unpkg.com/brain.js@1.1.2/browser.min.js"></script>
     <script language="javascript" type="module" src=main.js></script>

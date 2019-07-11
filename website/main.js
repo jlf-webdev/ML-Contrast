@@ -5,6 +5,7 @@ import {defineTextColor} from "./brainResolve.js";
 
 const network = trainBrain(rgbDataset);
 const input = document.querySelector("input");
+input.value = "#293DDC";
 const cn = document.querySelector("#container");
 
 input.addEventListener("input", (e)=> {
