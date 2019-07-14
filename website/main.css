@@ -3,15 +3,25 @@ body {
     background-color: rgb(228, 228, 228);
 }
 
-.color-picker {
-    text-align: center;
-    padding-top: 1rem;
-}
-
 #container {
     background-color: #293DDC;
     display: grid;
     text-align: center;
+    align-items: center;
     padding: 2rem 2rem 1rem 2rem;
+    transition: background 150ms;
 }
+
+#container p {
+    transition: color 150ms;
+}
+
+/*//////////////////////*/
+
+#color-picker {
+    border: 3px solid rgba(15,15,15,0.2);
+    text-align: center;
+}
+
+
 
