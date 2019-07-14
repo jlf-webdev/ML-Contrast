@@ -18,8 +18,8 @@ const cn = document.querySelector("#container");
     });*/
 
 
-let pickerWidth = 500;
-let pickerHeight = 200;
+let pickerWidth = 220;
+let pickerHeight = 180;
 let picker = new Picker(document.getElementById("color-picker"), pickerWidth, pickerHeight);
 
 //Draw
