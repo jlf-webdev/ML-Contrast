@@ -8,6 +8,8 @@ const network = trainBrain(rgbDataset);
 const cn = document.querySelector("#container");
 const info = document.querySelector('#info');
 const toggleSwitch = document.querySelector('#checkbox');
+const addRule = document.querySelector('#add-rule');
+const reset = document.querySelector('#reset');
 
 toggleSwitch.addEventListener("click", (e) => {
     var isChecked = toggleSwitch.checked;
@@ -19,6 +21,13 @@ toggleSwitch.addEventListener("click", (e) => {
     }
 });
 
+addRule.addEventListener('click', (e) => {
+    console.log('added a rule');
+});
+
+reset.addEventListener('click', (e) => {
+    console.log('reset the rules');
+});
 
 let pickerWidth = 220;
 let pickerHeight = 180;
