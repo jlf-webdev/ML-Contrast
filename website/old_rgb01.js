@@ -1,9 +1,9 @@
-export function getRgb01(val) {
-    let re = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
+export function rgb01(val) {
+    let re = /(\d+)/g;
     let m = val.match(re);
     return { 
-        r : Number((parseInt(m[1], 16)/255).toFixed(2)),
-        g : Number((parseInt(m[2], 16)/255).toFixed(2)),
-        b : Number((parseInt(m[3], 16)/255).toFixed(2))
+        r : Number((m[0]/255).toFixed(2)),
+        g : Number((m[1]/255).toFixed(2)),
+        b : Number((m[2]/255).toFixed(2))
     };
 }
