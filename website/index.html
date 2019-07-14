@@ -8,16 +8,25 @@
     <title>ML-Contrast</title>
 </head>
 <body>
-
     <div id="container">
-        <p>In this first version of the website, the machine learning part is already 
-            trained to apply the best contrast.<br><br>
-        Further versions will include an integrated color picker and a user interface 
+        <p>Further versions of this website will include an integrated color picker and a user interface 
             to generate the brain training datas.<br><br>
         Click the button below to set background color.
         </p>
-        <div><canvas id="color-picker"></canvas></div>
+        <div>
+            <canvas id="color-picker"></canvas>
+            <div id="info">rgb(4, 0, 84)</div>
+        </div>
         
+        <div id="text-color">
+            Text color 
+            <span>
+                <label class="switch">
+                    <input id="checkbox" type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </span>
+        </div>
     </div>
     
     

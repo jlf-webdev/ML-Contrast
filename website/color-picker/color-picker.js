@@ -8,9 +8,10 @@ export class Picker {
         // Get context
         this.context = this.target.getContext("2d");
         // Circle
-        this.pickerCircle = { x:10, y:10, width:7, insigth:7};
+        this.pickerCircle = { x:70, y:150, width:7, insigth:7};
         // Start event listeners
         this.listenForEvents();
+        this.isMouseDown = false;
     }
 
     draw() {
@@ -50,26 +51,26 @@ export class Picker {
     }
 
     listenForEvents() {
-        let isMouseDown = false;
+        this.isMouseDown = false;
         const onMouseDown = (e) => {
             let currentX = e.clientX - this.target.offsetLeft;
             let currentY = e.clientY - this.target.offsetTop;
-            this.pickerCircle.x = currentX >= this.width ? this.width-1 : currentX;
-            this.pickerCircle.y = currentY >= this.height ? this.height-1 : currentY;  
-            isMouseDown = true;
+            this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
+            this.pickerCircle.y = currentY >= this.height ? this.height : currentY;  
+            this.isMouseDown = true;
         }
 
         const onMouseMove = (e) => {
-            if (isMouseDown) {
+            if (this.isMouseDown) {
                 let currentX = e.clientX - this.target.offsetLeft;
                 let currentY = e.clientY - this.target.offsetTop;
-                this.pickerCircle.x = currentX >= this.width ? this.width-1 : currentX;
-                this.pickerCircle.y = currentY >= this.height ? this.height-1 : currentY;
+                this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
+                this.pickerCircle.y = currentY >= this.height ? this.height : currentY;
             }
         }
 
         const onMouseUp = () => {
-            isMouseDown = false;
+            this.isMouseDown = false;
         }
 
         // Register
