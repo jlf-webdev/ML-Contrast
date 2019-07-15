@@ -9,13 +9,15 @@
 </head>
 <body>
     <div id="container">
-        <p>Further versions of this website will include an integrated color picker and a user interface 
-            to generate the brain training datas.<br><br>
-        Toggle the switch to change text color.
-        </p>
+        This marchine learning app will solve the problem of text contrast using a small set of rules.<br><br>
+        <div class="headings-sm">
+                Teach the app how to handle contrast by setting your own rules.<br>
+                Reset the rules, set a background/text color combination that presents good contrast and add the rule (max 15).
+        </div>
+        
         <div>
-            <canvas id="color-picker"></canvas>
             <div id="info">rgb(4, 0, 84)</div>
+            <canvas id="color-picker"></canvas>
         </div>
         
         <div id="text-color">
@@ -33,9 +35,15 @@
     </div>
     
     <div id="rules-ctn">
-        <div class="title">Rules</div>
-        <div class="contents"></div>
-        <div><input id="hide-rules" type="button" value="Hide rules"></div>
+        <div id="grid">
+            <div id="title">Rules</div>
+            <div id="contents">
+                <ul id="list">
+
+                </ul>
+            </div>
+            <div><input id="hide-rules" type="button" value="Hide rules"></div>
+        </div>
     </div>
     
     <script src=" https://unpkg.com/brain.js@1.1.2/browser.min.js"></script>

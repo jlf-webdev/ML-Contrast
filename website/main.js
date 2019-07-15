@@ -16,6 +16,22 @@ const hideRules = document.querySelector("#hide-rules");
 const resetRules = document.querySelector('#reset-rules');
 const rulesCtn = document.querySelector('#rules-ctn');
 
+
+
+function printDefaultRules() {
+    dataset.forEach(e => {
+        let bg = `rgb(${(e.input.r*255)|0}, ${(e.input.g*255)|0}, ${(e.input.b*255)|0})`;
+        let color = e.output.dark ? 'white' : 'black';
+        let li = document.createElement("li");
+
+        li.appendChild(document.createTextNode(`${bg}`));
+        li.style.backgroundColor = bg;
+        li.style.color = color;
+        list.appendChild(li);
+    });
+}
+printDefaultRules();
+
 hideRules.addEventListener("click", (e) => {
     rulesCtn.style.visibility = "hidden";
 })
@@ -26,30 +42,44 @@ showRules.addEventListener("click", (e) => {
 
 
 addRule.addEventListener("click", (e) => {
+    const list = document.querySelector("#list")
+    
     if (!cn.style.backgroundColor) {
         cn.style.backgroundColor="rgb(4,0,84)";
-    }
-    
-    let bg = cn.style.backgroundColor;
-    console.log(bg);
-    let color = rgb01(bg);
-    let rule = {
-        input : color,
-        output: toggleSwitch.checked ? { light : 1 } : { dark :1 }
+        cn.style.color= "white";
     }
 
-    rgbDataset.push(rule);
-    network = trainBrain(rgbDataset);
-    cn.style.Color = toggleSwitch.checked ? 'black' : 'white';
-    console.log(color);
-    console.log(rgbDataset);
-    console.log(rule);
+    if (rgbDataset.length<15){
+        let li = document.createElement("li");
+
+        let bg = cn.style.backgroundColor;
+        let color = rgb01(bg);
+        let rule = {
+            input : color,
+            output: toggleSwitch.checked ? { light : 1 } : { dark :1 }
+        }
+        
+        rgbDataset.push(rule);
+        network = trainBrain(rgbDataset);
+        cn.style.Color = toggleSwitch.checked ? 'black' : 'white';
+
+        li.appendChild(document.createTextNode(`${bg}`));
+        li.style.backgroundColor = bg;
+        li.style.color = cn.style.color;
+        list.appendChild(li);
+    }
 });
 
 resetRules.addEventListener("click", (e) => {
     rgbDataset = [];
     network = null;
-    console.log(rgbDataset);
+    
+    let parent = list.parentNode;
+    parent.removeChild(list);
+
+    let ul = document.createElement("UL");
+    parent.appendChild(ul);
+    ul.setAttribute("id", "list");
 });
 
 toggleSwitch.addEventListener("click", (e) => {
