@@ -52,6 +52,7 @@ export class Picker {
 
     listenForEvents() {
         this.isMouseDown = false;
+        this.isTouched = false;
         const onMouseDown = (e) => {
             let currentX = e.pageX - this.target.offsetLeft;
             let currentY = e.pageY - this.target.offsetTop;
@@ -73,6 +74,27 @@ export class Picker {
             this.isMouseDown = false;
         }
 
+        const onTouchStart = (e) => {
+            let currentX = e.touches[0].pageX - this.target.offsetLeft;
+            let currentY = e.touches[0].pageY - this.target.offsetTop;
+            this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
+            this.pickerCircle.y = currentY >= this.height ? this.height : currentY;  
+            this.isTouched = true;
+        }
+
+        const onTouchMove = (e) => {
+            if (this.isMouseDown) {
+                let currentX = e.touches[0].pageX - this.target.offsetLeft;
+                let currentY = e.touches[0].pageY - this.target.offsetTop;
+                this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
+                this.pickerCircle.y = currentY >= this.height ? this.height : currentY;
+            }
+        }
+
+        const onTouchEnd = () => {
+            this.isTouched = false;
+        }
+
         // Register
         this.target.addEventListener("mousedown", onMouseDown);
         this.target.addEventListener("mousedown", () => this.onChangeCallback(this.getPickedColor()));
@@ -80,11 +102,11 @@ export class Picker {
         this.target.addEventListener("mousemove", () => this.onChangeCallback(this.getPickedColor()));
         document.addEventListener("mouseup", onMouseUp);
 
-        // this.target.addEventListener("touchstart", onMouseDown);
-        // this.target.addEventListener("touchstart", () => this.onChangeCallback(this.getPickedColor()));
-        this.target.addEventListener("touchmove", onMouseMove);
+        this.target.addEventListener("touchstart", onTouchStart);
+        this.target.addEventListener("touchstart", () => this.onChangeCallback(this.getPickedColor()));
+        this.target.addEventListener("touchmove", onTouchMove);
         this.target.addEventListener("touchmove", () => this.onChangeCallback(this.getPickedColor()));
-        // document.addEventListener("touchend", onMouseUp);
+        document.addEventListener("touchend", onTouchEnd);
     }
 
     getPickedColor() {
