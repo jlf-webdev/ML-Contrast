@@ -100,7 +100,8 @@ let pickerHeight = 180;
 let picker = new Picker(document.getElementById("color-picker"), pickerWidth, pickerHeight);
 
 //Draw
-setInterval(() => picker.draw(), 16);
+//setInterval(() => picker.draw(), 16);
+requestAnimationFrame(() => { picker.draw() } );
 
 picker.onChange((color) => {
     //console.log(color);
