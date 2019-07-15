@@ -123,6 +123,7 @@ picker.onChange((color) => {
         info.innerText = `rgb(${color.r}, ${color.g}, ${color.b})`; 
 });
 
+
 function loop() {
     picker.draw();
     requestAnimationFrame(loop);
