@@ -76,8 +76,8 @@ export class Picker {
         // Register
         this.target.addEventListener("mousedown", onMouseDown);
         this.target.addEventListener("mousedown", () => this.onChangeCallback(this.getPickedColor()));
-        this.target.addEventListener("mousemove", onMouseMove); 
-        this.target.addEventListener("mousemove", () => this.onChangeCallback(this.getPickedColor()));
+        // this.target.addEventListener("mousemove", onMouseMove); 
+        // this.target.addEventListener("mousemove", () => this.onChangeCallback(this.getPickedColor()));
         document.addEventListener("mouseup", onMouseUp);
 
         // this.target.addEventListener("touchstart", onMouseDown);
