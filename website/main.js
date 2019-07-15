@@ -104,7 +104,7 @@ setInterval(() => picker.draw(), 16);
 
 picker.onChange((color) => {
     //console.log(color);
-    if (picker.isMouseDown) {
+    
         if (network) {
             let background01 = getRgb01(color);
             let textColor = defineTextColor(background01, network) == 'dark' ? 'white' : 'black';
@@ -119,5 +119,5 @@ picker.onChange((color) => {
         cn.style.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`;
         body.style.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`;
         info.innerText = `rgb(${color.r}, ${color.g}, ${color.b})`; 
-    }
+    
 });
