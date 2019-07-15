@@ -101,7 +101,8 @@ let picker = new Picker(document.getElementById("color-picker"), pickerWidth, pi
 
 //Draw
 //setInterval(() => picker.draw(), 16);
-requestAnimationFrame(() => { picker.draw() } );
+//requestAnimationFrame(() => { this.draw() } );
+
 
 picker.onChange((color) => {
     //console.log(color);
@@ -120,5 +121,10 @@ picker.onChange((color) => {
         cn.style.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`;
         body.style.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`;
         info.innerText = `rgb(${color.r}, ${color.g}, ${color.b})`; 
-    
 });
+
+function loop() {
+    picker.draw();
+    requestAnimationFrame(loop);
+  }
+requestAnimationFrame(loop);

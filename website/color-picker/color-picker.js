@@ -99,5 +99,6 @@ export class Picker {
     onChange(callback) {
         this.onChangeCallback = callback;
     }
+
 }
 
