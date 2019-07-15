@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="main.css">
     <title>ML-Contrast</title>
 </head>
-<body>
+<body id="body">
     <div id="container">
-        This marchine learning app will solve the problem of text contrast using a small set of rules.<br><br>
+        <div class="headings-bg">This marchine learning app will solve the problem of text contrast using a small set of rules.</div>
         <div class="headings-sm">
                 Teach the app how to handle contrast by setting your own rules.<br>
                 Reset the rules, set a background/text color combination that presents good contrast and add the rule (max 15).
@@ -19,18 +19,19 @@
             <div id="info">rgb(4, 0, 84)</div>
             <canvas id="color-picker"></canvas>
         </div>
-        
         <div id="text-color">
-            Text color 
-            <span>
-                <label class="switch">
-                    <input id="checkbox" type="checkbox">
-                    <span class="slider round"></span>
-                </label>
-            </span>
-            <div><input id="add-rule" type="button" value="Add this rule"></div>
-            <div><input id="show-rules" type="button" value="Show rules"></div>
-            <div><input id="reset-rules" type="button" value="Reset rules"></div>
+            <label class="switch">
+                <input id="checkbox" type="checkbox">
+                <span class="slider round"></span>
+            </label> 
+        </div>
+        <div id="btn-area">
+            <div>Rules</div>
+            <div id="buttons">
+                <div ><input id="add-rule" type="button" value="Add"></div>
+                <div ><input id="show-rules" type="button" value="Show"></div>
+                <div ><input id="reset-rules" type="button" value="Reset"></div>
+            </div>
         </div>
     </div>
     

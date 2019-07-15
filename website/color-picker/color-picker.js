@@ -53,8 +53,8 @@ export class Picker {
     listenForEvents() {
         this.isMouseDown = false;
         const onMouseDown = (e) => {
-            let currentX = e.clientX - this.target.offsetLeft;
-            let currentY = e.clientY - this.target.offsetTop;
+            let currentX = e.pageX - this.target.offsetLeft;
+            let currentY = e.pageY - this.target.offsetTop;
             this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
             this.pickerCircle.y = currentY >= this.height ? this.height : currentY;  
             this.isMouseDown = true;
@@ -62,8 +62,8 @@ export class Picker {
 
         const onMouseMove = (e) => {
             if (this.isMouseDown) {
-                let currentX = e.clientX - this.target.offsetLeft;
-                let currentY = e.clientY - this.target.offsetTop;
+                let currentX = e.pageX - this.target.offsetLeft;
+                let currentY = e.pageY - this.target.offsetTop;
                 this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
                 this.pickerCircle.y = currentY >= this.height ? this.height : currentY;
             }

@@ -8,6 +8,7 @@ import {Picker} from "./color-picker/color-picker.js"
 let rgbDataset = dataset;
 var network = trainBrain(rgbDataset);
 const cn = document.querySelector("#container");
+const body = document.querySelector('#body');
 const info = document.querySelector('#info');
 const toggleSwitch = document.querySelector('#checkbox');
 const addRule = document.querySelector('#add-rule');
@@ -33,11 +34,11 @@ function printDefaultRules() {
 printDefaultRules();
 
 hideRules.addEventListener("click", (e) => {
-    rulesCtn.style.visibility = "hidden";
+    rulesCtn.style.display = "none";
 })
 
 showRules.addEventListener("click", (e) => {
-    rulesCtn.style.visibility = "visible";
+    rulesCtn.style.display = "grid";
 });
 
 
@@ -45,6 +46,7 @@ addRule.addEventListener("click", (e) => {
     const list = document.querySelector("#list")
     
     if (!cn.style.backgroundColor) {
+        body.style.backgroundColor="rgb(4,0,84)";
         cn.style.backgroundColor="rgb(4,0,84)";
         cn.style.color= "white";
     }
@@ -62,6 +64,7 @@ addRule.addEventListener("click", (e) => {
         rgbDataset.push(rule);
         network = trainBrain(rgbDataset);
         cn.style.Color = toggleSwitch.checked ? 'black' : 'white';
+        body.style.backgroundColor=cn.style.Color;
 
         li.appendChild(document.createTextNode(`${bg}`));
         li.style.backgroundColor = bg;
@@ -114,6 +117,7 @@ picker.onChange((color) => {
             }
         }
         cn.style.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`;
+        body.style.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`;
         info.innerText = `rgb(${color.r}, ${color.g}, ${color.b})`; 
     }
 });
