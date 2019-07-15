@@ -64,7 +64,7 @@ addRule.addEventListener("click", (e) => {
         rgbDataset.push(rule);
         network = trainBrain(rgbDataset);
         cn.style.Color = toggleSwitch.checked ? 'black' : 'white';
-        body.style.backgroundColor=cn.style.Color;
+        body.style.backgroundColor=bg;
 
         li.appendChild(document.createTextNode(`${bg}`));
         li.style.backgroundColor = bg;
