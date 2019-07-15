@@ -7,28 +7,32 @@ import {Picker} from "./color-picker/color-picker.js"
 
 let rgbDataset = dataset;
 var network = trainBrain(rgbDataset);
-console.log(rgbDataset);
 const cn = document.querySelector("#container");
 const info = document.querySelector('#info');
 const toggleSwitch = document.querySelector('#checkbox');
 const addRule = document.querySelector('#add-rule');
-const reset = document.querySelector('#reset');
+const showRules = document.querySelector('#show-rules');
+const hideRules = document.querySelector("#hide-rules");
+const resetRules = document.querySelector('#reset-rules');
+const rulesCtn = document.querySelector('#rules-ctn');
 
+hideRules.addEventListener("click", (e) => {
+    rulesCtn.style.visibility = "hidden";
+})
+
+showRules.addEventListener("click", (e) => {
+    rulesCtn.style.visibility = "visible";
+});
 
 
 addRule.addEventListener("click", (e) => {
     if (!cn.style.backgroundColor) {
         cn.style.backgroundColor="rgb(4,0,84)";
     }
-    /*let rule = { input: { r: 0, g: 0, b: 0},  output: { dark: 1 }};
-    rgbDataset.push(rule);
-    rule = { input: { r: 1, g: 1, b: 1 },     output : { light: 1}};
-    rgbDataset.push(rule);*/
+    
     let bg = cn.style.backgroundColor;
     console.log(bg);
-    
-    let color = rgb01(bg)
-
+    let color = rgb01(bg);
     let rule = {
         input : color,
         output: toggleSwitch.checked ? { light : 1 } : { dark :1 }
@@ -42,7 +46,7 @@ addRule.addEventListener("click", (e) => {
     console.log(rule);
 });
 
-reset.addEventListener("click", (e) => {
+resetRules.addEventListener("click", (e) => {
     rgbDataset = [];
     network = null;
     console.log(rgbDataset);
