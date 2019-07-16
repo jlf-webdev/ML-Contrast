@@ -54,7 +54,7 @@ export class Picker {
 
     listenForEvents() {
         this.isMouseDown = false;
-        //this.isTouched = false;
+        this.isTouched = false;
 
         const onMouseDown = (e) => {
             let currentX = e.pageX - this.target.offsetLeft;
@@ -121,7 +121,7 @@ export class Picker {
         }
         else {
             this.target.addEventListener("touchstart", onTouchStart);
-            this.target.addEventListener("touchstart", () => this.onChangeCallback(this.getPickedColor()));
+            //this.target.addEventListener("touchstart", () => this.onChangeCallback(this.getPickedColor()));
             // this.target.addEventListener("touchmove", onTouchMove);
             // this.target.addEventListener("touchmove", () => this.onChangeCallback(this.getPickedColor()));
             // document.addEventListener("touchend", onTouchEnd);
