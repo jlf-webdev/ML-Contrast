@@ -1,5 +1,5 @@
 export class Picker {
-    constructor (target, width, height) {
+    constructor (target, width, height, isTouch) {
         this.target = target;
         this.width = width;
         this.height = height;
@@ -12,6 +12,8 @@ export class Picker {
         // Start event listeners
         this.listenForEvents();
         this.isMouseDown = false;
+        this.isTouch = isTouch;
+        //console.log(this.isTouch);
     }
 
     draw() {
@@ -52,7 +54,8 @@ export class Picker {
 
     listenForEvents() {
         this.isMouseDown = false;
-        this.isTouched = false;
+        //this.isTouched = false;
+
         const onMouseDown = (e) => {
             let currentX = e.pageX - this.target.offsetLeft;
             let currentY = e.pageY - this.target.offsetTop;
@@ -73,40 +76,56 @@ export class Picker {
         const onMouseUp = () => {
             this.isMouseDown = false;
         }
-
+        
+        
+        
         const onTouchStart = (e) => {
+            e.preventDefault();
             let currentX = e.touches[0].pageX - this.target.offsetLeft;
             let currentY = e.touches[0].pageY - this.target.offsetTop;
             this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
             this.pickerCircle.y = currentY >= this.height ? this.height : currentY;  
             this.isTouched = true;
-        }
 
-        const onTouchMove = (e) => {
-            if (this.isMouseDown) {
+            this.target.addEventListener('touchmove', () => {
                 let currentX = e.touches[0].pageX - this.target.offsetLeft;
                 let currentY = e.touches[0].pageY - this.target.offsetTop;
                 this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
                 this.pickerCircle.y = currentY >= this.height ? this.height : currentY;
-            }
+            }, false);
+
+            this.target.addEventListener("touchmove", () => this.onChangeCallback(this.getPickedColor()));
         }
 
-        const onTouchEnd = () => {
-            this.isTouched = false;
-        }
+        // const onTouchMove = (e) => {
+        //     if (this.isMouseDown) {
+        //         let currentX = e.touches[0].pageX - this.target.offsetLeft;
+        //         let currentY = e.touches[0].pageY - this.target.offsetTop;
+        //         this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
+        //         this.pickerCircle.y = currentY >= this.height ? this.height : currentY;
+        //     }
+        // }
+
+        // const onTouchEnd = () => {
+        //     this.isTouched = false;
+        // }
+        
 
         // Register
-        this.target.addEventListener("mousedown", onMouseDown);
-        this.target.addEventListener("mousedown", () => this.onChangeCallback(this.getPickedColor()));
-        this.target.addEventListener("mousemove", onMouseMove); 
-        this.target.addEventListener("mousemove", () => this.onChangeCallback(this.getPickedColor()));
-        document.addEventListener("mouseup", onMouseUp);
-
-        this.target.addEventListener("touchstart", onTouchStart);
-        this.target.addEventListener("touchstart", () => this.onChangeCallback(this.getPickedColor()));
-        this.target.addEventListener("touchmove", onTouchMove);
-        this.target.addEventListener("touchmove", () => this.onChangeCallback(this.getPickedColor()));
-        document.addEventListener("touchend", onTouchEnd);
+        if (!this.isTouch) {
+            this.target.addEventListener("mousedown", onMouseDown);
+            this.target.addEventListener("mousedown", () => this.onChangeCallback(this.getPickedColor()));
+            this.target.addEventListener("mousemove", onMouseMove); 
+            this.target.addEventListener("mousemove", () => this.onChangeCallback(this.getPickedColor()));
+            document.addEventListener("mouseup", onMouseUp);
+        }
+        else {
+            this.target.addEventListener("touchstart", onTouchStart);
+            this.target.addEventListener("touchstart", () => this.onChangeCallback(this.getPickedColor()));
+            // this.target.addEventListener("touchmove", onTouchMove);
+            // this.target.addEventListener("touchmove", () => this.onChangeCallback(this.getPickedColor()));
+            // document.addEventListener("touchend", onTouchEnd);
+        }
     }
 
     getPickedColor() {
