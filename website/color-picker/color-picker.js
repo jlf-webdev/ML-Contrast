@@ -85,7 +85,7 @@ export class Picker {
             let currentY = e.touches[0].pageY - this.target.offsetTop;
             this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
             this.pickerCircle.y = currentY >= this.height ? this.height : currentY;  
-            console.log(['touchStart', currentX, currentY);
+            console.log(['touchStart', currentX, currentY]);
             this.isTouched = true;
         }
 
