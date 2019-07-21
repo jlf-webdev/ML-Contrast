@@ -122,8 +122,8 @@ export class Picker {
             this.target.addEventListener("touchstart", () => this.onChangeCallback(this.getPickedColor()));
             // this.target.addEventListener("touchmove", onTouchMove);
             // this.target.addEventListener("touchmove", () => this.onChangeCallback(this.getPickedColor()));
-            document.addEventListener("touchend", onTouchEnd);
-            document.addEventListener("touchcancel", onTouchEnd);
+            // document.addEventListener("touchend", onTouchEnd);
+            // document.addEventListener("touchcancel", onTouchEnd);
         //}
     }
 
