@@ -88,24 +88,28 @@ export class Picker {
             let currentY = e.touches[0].pageY - this.target.offsetTop;
             this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
             this.pickerCircle.y = currentY >= this.height ? this.height : currentY; 
+            this.isTouched = true;
             //console.log("starting");
-            this.target.addEventListener('touchmove', onTouchMove);
-            this.target.addEventListener("touchmove", () => this.onChangeCallback(this.getPickedColor()));
+            // this.target.addEventListener('touchmove', onTouchMove);
+            // this.target.addEventListener("touchmove", () => this.onChangeCallback(this.getPickedColor()));
         }
     
         const onTouchMove = (e) => {
             e.preventDefault();
-            //console.log("moving");
-            let currentX = e.touches[0].pageX - this.target.offsetLeft;
-            let currentY = e.touches[0].pageY - this.target.offsetTop;
-            this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
-            this.pickerCircle.y = currentY >= this.height ? this.height : currentY;
+            if (this.isTouched) {
+                //console.log("moving");
+                let currentX = e.touches[0].pageX - this.target.offsetLeft;
+                let currentY = e.touches[0].pageY - this.target.offsetTop;
+                this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
+                this.pickerCircle.y = currentY >= this.height ? this.height : currentY;
+            }
         }
     
         function onTouchEnd() {
             //console.log("ending");
-            this.target.removeEventListener('touchmove', onTouchMove);
-            this.target.removeEventListener("touchmove", () => this.onChangeCallback(this.getPickedColor()));
+            this.isTouched = false;
+            // this.target.removeEventListener('touchmove', onTouchMove);
+            // this.target.removeEventListener("touchmove", () => this.onChangeCallback(this.getPickedColor()));
         }
     
 
@@ -120,10 +124,10 @@ export class Picker {
         else {*/
             this.target.addEventListener("touchstart", onTouchStart);
             this.target.addEventListener("touchstart", () => this.onChangeCallback(this.getPickedColor()));
-            // this.target.addEventListener("touchmove", onTouchMove);
-            // this.target.addEventListener("touchmove", () => this.onChangeCallback(this.getPickedColor()));
-            // document.addEventListener("touchend", onTouchEnd);
-            // document.addEventListener("touchcancel", onTouchEnd);
+            this.target.addEventListener("touchmove", onTouchMove);
+            this.target.addEventListener("touchmove", () => this.onChangeCallback(this.getPickedColor()));
+            document.addEventListener("touchend", onTouchEnd);
+            document.addEventListener("touchcancel", onTouchEnd);
         //}
     }
 
