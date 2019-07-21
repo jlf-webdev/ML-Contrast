@@ -77,31 +77,7 @@ export class Picker {
             this.isMouseDown = false;
         }
         
-        /*const onTouchStart = (e) => {
-            e.preventDefault();
-            let currentX = e.touches[0].pageX - this.target.offsetLeft;
-            let currentY = e.touches[0].pageY - this.target.offsetTop;
-            this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
-            this.pickerCircle.y = currentY >= this.height ? this.height : currentY;  
-            console.log(['touchStart', currentX, currentY]);
-            this.isTouched = true;
-        }
-
-        const onTouchMove = (e) => {
-            if (this.isMouseDown) {
-                let currentX = e.touches[0].pageX - this.target.offsetLeft;
-                let currentY = e.touches[0].pageY - this.target.offsetTop;
-                this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
-                this.pickerCircle.y = currentY >= this.height ? this.height : currentY;
-                console.log(['touchStart', currentX, currentY]);
-            }
-        }
-
-        const onTouchEnd = () => {
-            this.isTouched = false;
-        }*/
         
-
         const onTouchStart = (e) => {
             e.preventDefault();
             let currentX = e.touches[0].pageX - this.target.offsetLeft;

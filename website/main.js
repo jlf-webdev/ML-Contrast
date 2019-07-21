@@ -105,7 +105,7 @@ let picker = new Picker(document.getElementById("color-picker"), pickerWidth, pi
 
 
 picker.onChange((color) => {
-    //console.log(color);
+    console.log(color);
     
         if (network) {
             let background01 = getRgb01(color);
