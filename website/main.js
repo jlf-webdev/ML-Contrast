@@ -18,7 +18,7 @@ const resetRules = document.querySelector('#reset-rules');
 const rulesCtn = document.querySelector('#rules-ctn');
 
 const isTouch = (('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0));
-console.log(isTouch);
+
 
 function printDefaultRules() {
     dataset.forEach(e => {
@@ -97,8 +97,8 @@ toggleSwitch.addEventListener("click", (e) => {
 });
 
 
-let pickerWidth = 220;
-let pickerHeight = 180;
+let pickerWidth = 250;
+let pickerHeight = 220;
 
 let picker = new Picker(document.getElementById("color-picker"), pickerWidth, pickerHeight, isTouch);
 
@@ -111,10 +111,6 @@ function setPickerEvents () {
     }
 }
 setPickerEvents();
-
-//Draw
-//setInterval(() => picker.draw(), 16);
-//requestAnimationFrame(() => { this.draw() } );
 
 
 picker.onChange((color) => {

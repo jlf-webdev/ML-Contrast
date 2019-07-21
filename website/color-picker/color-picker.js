@@ -54,8 +54,6 @@ export class Picker {
         this.isMouseDown = false;
         
         const onMouseDown = (e) => {
-            console.log("mouseDown");
-            console.log(this.isTouch);
             let currentX = e.pageX - this.target.offsetLeft;
             let currentY = e.pageY - this.target.offsetTop;
             this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
@@ -65,7 +63,6 @@ export class Picker {
 
         const onMouseMove = (e) => {
             if (this.isMouseDown) {
-                console.log("mouseMove");
                 let currentX = e.pageX - this.target.offsetLeft;
                 let currentY = e.pageY - this.target.offsetTop;
                 this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
@@ -74,7 +71,6 @@ export class Picker {
         }
 
         const onMouseUp = () => {
-            console.log("mouseUp");
             this.isMouseDown = false;
         }
         
@@ -95,15 +91,11 @@ export class Picker {
             this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
             this.pickerCircle.y = currentY >= this.height ? this.height : currentY; 
             this.isTouched = true;
-            //console.log("starting");
-            // this.target.addEventListener('touchmove', onTouchMove);
-            // this.target.addEventListener("touchmove", () => this.onChangeCallback(this.getPickedColor()));
         }
     
         const onTouchMove = (e) => {
             e.preventDefault();
             if (this.isTouched) {
-                //console.log("moving");
                 let currentX = e.touches[0].pageX - this.target.offsetLeft;
                 let currentY = e.touches[0].pageY - this.target.offsetTop;
                 this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
@@ -112,7 +104,6 @@ export class Picker {
         }
     
         function onTouchEnd() {
-            //console.log("ending");
             this.isTouched = false;
         }
 
