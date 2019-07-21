@@ -57,6 +57,7 @@ export class Picker {
         this.isTouched = false;
 
         const onMouseDown = (e) => {
+            console.log("mouseDown");
             let currentX = e.pageX - this.target.offsetLeft;
             let currentY = e.pageY - this.target.offsetTop;
             this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
@@ -66,6 +67,7 @@ export class Picker {
 
         const onMouseMove = (e) => {
             if (this.isMouseDown) {
+                console.log("mouseMove");
                 let currentX = e.pageX - this.target.offsetLeft;
                 let currentY = e.pageY - this.target.offsetTop;
                 this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
@@ -74,6 +76,7 @@ export class Picker {
         }
 
         const onMouseUp = () => {
+            console.log("mouseUp");
             this.isMouseDown = false;
         }
         
