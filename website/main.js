@@ -18,6 +18,7 @@ const resetRules = document.querySelector('#reset-rules');
 const rulesCtn = document.querySelector('#rules-ctn');
 
 const isTouch = (('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0));
+console.log(isTouch);
 
 function printDefaultRules() {
     dataset.forEach(e => {
