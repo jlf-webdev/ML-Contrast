@@ -97,7 +97,7 @@ toggleSwitch.addEventListener("click", (e) => {
 });
 
 
-let pickerWidth = 250;
+let pickerWidth = 300;
 let pickerHeight = 220;
 
 let picker = new Picker(document.getElementById("color-picker"), pickerWidth, pickerHeight, isTouch);
