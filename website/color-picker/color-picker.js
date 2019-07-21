@@ -84,13 +84,14 @@ export class Picker {
             let currentY = e.touches[0].pageY - this.target.offsetTop;
             this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
             this.pickerCircle.y = currentY >= this.height ? this.height : currentY; 
-
+            console.log("starting");
             this.target.addEventListener('touchmove', onTouchMove);
             this.target.addEventListener("touchmove", () => this.onChangeCallback(this.getPickedColor()));
         }
     
         const onTouchMove = (e) => {
             e.preventDefault();
+            console.log("moving");
             let currentX = e.touches[0].pageX - this.target.offsetLeft;
             let currentY = e.touches[0].pageY - this.target.offsetTop;
             this.pickerCircle.x = currentX >= this.width ? this.width : currentX;
@@ -98,6 +99,7 @@ export class Picker {
         }
     
         function onTouchEnd() {
+            console.log("ending");
             this.target.removeEventListener('touchmove', onTouchMove);
             this.target.removeEventListener("touchmove", () => this.onChangeCallback(this.getPickedColor()));
         }
