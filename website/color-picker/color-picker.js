@@ -110,21 +110,21 @@ export class Picker {
     
 
         // Register
-        if (!this.isTouch) {
+        /*if (!this.isTouch) {
             this.target.addEventListener("mousedown", onMouseDown);
             this.target.addEventListener("mousedown", () => this.onChangeCallback(this.getPickedColor()));
             this.target.addEventListener("mousemove", onMouseMove); 
             this.target.addEventListener("mousemove", () => this.onChangeCallback(this.getPickedColor()));
             document.addEventListener("mouseup", onMouseUp);
         }
-        else {
+        else {*/
             this.target.addEventListener("touchstart", onTouchStart);
             this.target.addEventListener("touchstart", () => this.onChangeCallback(this.getPickedColor()));
             // this.target.addEventListener("touchmove", onTouchMove);
             // this.target.addEventListener("touchmove", () => this.onChangeCallback(this.getPickedColor()));
             document.addEventListener("touchend", onTouchEnd);
             document.addEventListener("touchcancel", onTouchEnd);
-        }
+        //}
     }
 
     getPickedColor() {
