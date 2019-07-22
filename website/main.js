@@ -9,6 +9,7 @@ import {rules} from "./default/rules.js"
 const cn = document.querySelector("#container");
 const body = document.querySelector('#body');
 const toggleSwitch = document.querySelector('#checkbox');
+const info = document.querySelector('#info');
 const addRule = document.querySelector('#add-rule');
 const showRules = document.querySelector('#show-rules');
 const hideRules = document.querySelector("#hide-rules");
@@ -95,6 +96,7 @@ function pickerSetup() {
         }
         cn.style.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`;
         body.style.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`;
+        info.innerText = `rgb(${color.r}, ${color.g}, ${color.b})`;
     });
 }
 
