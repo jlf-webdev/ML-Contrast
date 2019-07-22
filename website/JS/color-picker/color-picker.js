@@ -117,11 +117,12 @@ export class Picker {
 
     getPickedColor() {
         let imageData = this.context.getImageData(this.pickerCircle.x, this.pickerCircle.y, 1, 1);
-        return { 
-            r: imageData.data[0], 
-            g: imageData.data[1],
-            b: imageData.data[2]
-        }
+        return `rgb(${imageData.data[0]}, ${imageData.data[1]}, ${imageData.data[2]})`;
+        // return { 
+        //     r: imageData.data[0], 
+        //     g: imageData.data[1],
+        //     b: imageData.data[2]
+        // }
     }
 
     onChange(callback) {

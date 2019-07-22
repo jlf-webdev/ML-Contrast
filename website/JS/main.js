@@ -1,8 +1,6 @@
 import {dataset} from "./default/rgbDataset.js";
 import {trainBrain} from "./brain/brainTraining.js";
-import {getRgb01} from "./rgb01.js";
-import {rgb01} from "./old_rgb01.js";
-import {defineTextColor} from "./brain/brainResolve.js";
+import {rgb01} from "./rgb01.js";
 import {Picker} from "./color-picker/color-picker.js"
 import {rules} from "./default/rules.js"
 
@@ -89,14 +87,14 @@ function pickerSetup() {
     
     picker.onChange((color) => {
         if (network && (picker.isMouseDown || picker.isTouched)) {
-            let background01 = getRgb01(color);
-            let textColor = defineTextColor(background01, network) == 'dark' ? 'white' : 'black';
+            let background01 = rgb01(color);
+            let textColor = brain.likely(background01, network) == 'dark' ? 'white' : 'black';
             cn.style.color = textColor;
             toggleSwitch.checked = textColor=='black' ? true : false;
         }
-        cn.style.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`;
-        body.style.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`;
-        info.innerText = `rgb(${color.r}, ${color.g}, ${color.b})`;
+        cn.style.backgroundColor = color;
+        body.style.backgroundColor = color;
+        info.innerText = color;
     });
 }
 
