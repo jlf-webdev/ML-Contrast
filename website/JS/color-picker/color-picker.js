@@ -8,7 +8,7 @@ export class Picker {
         // Get context
         this.context = this.target.getContext("2d");
         // Circle
-        this.pickerCircle = { x:70, y:150, width:7, insigth:7};
+        this.pickerCircle = { x:96, y:183, width:7, insigth:7};
         
         this.isMouseDown = false;
         this.isTouched = false;

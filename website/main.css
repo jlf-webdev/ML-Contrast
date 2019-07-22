@@ -3,14 +3,14 @@
   height: 100%;
   margin: 0px;
   padding: 0px;
-  background-color: rgb(4,0,84);
+  background-color: rgb(4,0,85);
   transition: background 150ms;
   display: grid;
   justify-items: center;
 }
 
 #container {
-  background-color: rgb(4,0,84);
+  background-color: rgb(4,0,85);
   color: white;
   max-width: 600px;
   height: 100%;
@@ -27,18 +27,21 @@
 }
 
 #headings-bg {
-  padding-bottom: .5rem;
-  border-bottom: 1px solid black;
+  padding-top: 1rem;
+  /*padding-bottom: .5rem;
+  /*border-bottom: 1px solid white;*/
+  font-size: 120%
 }
 
 #headings-sm {
-  padding : .5rem 0;
-  border-bottom: 1px solid black;
+  padding-bottom : .5rem;
+  border-bottom: 1px solid white;
   font-size : 90%;
 }
 
 #info {
   padding : .5rem;
+  padding-top: 2rem;
 }
 
 #color-picker {
@@ -47,8 +50,8 @@
 }
 
 #text-color {
-  padding-bottom: .5rem;
-  border-bottom: 1px solid black;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid white;
 }
 
 #buttons {

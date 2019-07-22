@@ -21,11 +21,7 @@ var rgbDataset = dataset;
 var network = trainBrain(rgbDataset);
 
 var elementsWithBgColor = [cn, body];
-var borders = [
-    bigHeadingsBorder, 
-    smallHeadingsBorder,
-    textColorBorder
-];
+var borders = [smallHeadingsBorder, textColorBorder];
 
 // console.log(borders);
 
@@ -33,6 +29,7 @@ function setup() {
     body.style.backgroundColor="rgb(4,0,84)";
     cn.style.backgroundColor="rgb(4,0,84)";
     cn.style.color= "white";
+    toggleSwitch.checked = false;
     toggleSwitch.addEventListener("click", (e) => toggleSwitch.checked ? cn.style.color = 'black' : cn.style.color = 'white');
     rulesSetup();
     pickerSetup();
@@ -104,14 +101,13 @@ function pickerSetup() {
             
             cn.style.color = textColor;
             borders.forEach(e => e.style.borderColor = textColor);
-            // bigHeadingsBorder.style.borderColor = textColor;
-            // smallHeadingsBorder.style.borderColor = textColor;
-            // textColorBorder.style.borderColor = textColor;
             
             toggleSwitch.checked = textColor=='black' ? true : false;
         }
+        let re = /(\d+)/g;
+        let m = color.match(re);
         elementsWithBgColor.forEach(e => e.style.backgroundColor = color);
-        info.innerText = color;
+        info.innerText = `Red: ${m[0]} | Green: ${m[1]} | Blue: ${m[2]}`;
     });
 }
 
