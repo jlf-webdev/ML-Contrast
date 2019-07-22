@@ -6,6 +6,9 @@ import {rules} from "./default/rules.js"
 
 const cn = document.querySelector("#container");
 const body = document.querySelector('#body');
+const bigHeadingsBorder = document.querySelector('#headings-bg');
+const smallHeadingsBorder = document.querySelector('#headings-sm');
+const textColorBorder = document.querySelector('#text-color');
 const toggleSwitch = document.querySelector('#checkbox');
 const info = document.querySelector('#info');
 const addRule = document.querySelector('#add-rule');
@@ -16,6 +19,15 @@ const rulesCtn = document.querySelector('#rules-ctn');
 
 var rgbDataset = dataset;
 var network = trainBrain(rgbDataset);
+
+var elementsWithBgColor = [cn, body];
+var borders = [
+    bigHeadingsBorder, 
+    smallHeadingsBorder,
+    textColorBorder
+];
+
+// console.log(borders);
 
 function setup() {
     body.style.backgroundColor="rgb(4,0,84)";
@@ -89,11 +101,16 @@ function pickerSetup() {
         if (network && (picker.isMouseDown || picker.isTouched)) {
             let background01 = rgb01(color);
             let textColor = brain.likely(background01, network) == 'dark' ? 'white' : 'black';
+            
             cn.style.color = textColor;
+            borders.forEach(e => e.style.borderColor = textColor);
+            // bigHeadingsBorder.style.borderColor = textColor;
+            // smallHeadingsBorder.style.borderColor = textColor;
+            // textColorBorder.style.borderColor = textColor;
+            
             toggleSwitch.checked = textColor=='black' ? true : false;
         }
-        cn.style.backgroundColor = color;
-        body.style.backgroundColor = color;
+        elementsWithBgColor.forEach(e => e.style.backgroundColor = color);
         info.innerText = color;
     });
 }

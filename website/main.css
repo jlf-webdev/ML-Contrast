@@ -26,12 +26,12 @@
   transition: color 150ms;
 }
 
-.headings-bg {
+#headings-bg {
   padding-bottom: .5rem;
   border-bottom: 1px solid black;
 }
 
-.headings-sm {
+#headings-sm {
   padding : .5rem 0;
   border-bottom: 1px solid black;
   font-size : 90%;
@@ -61,6 +61,7 @@
 #buttons input {
   width: 100%;
   border: 1px solid;
+  height: 3rem;
 }
 
 #add-rule {
@@ -74,6 +75,7 @@
 #reset-rules {
   border-radius: 0 5px 5px 0;
 }
+
 
 /* Switch
 //////////*/
@@ -190,4 +192,8 @@
 li {
   list-style-type: none;
   padding: 0 2rem;
+}
+
+#hide-rules {
+  height: 3rem;
 }
