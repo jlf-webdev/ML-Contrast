@@ -1,5 +1,5 @@
 export class Picker {
-    constructor (target, width, height, isTouch) {
+    constructor (target, width, height) {
         this.target = target;
         this.width = width;
         this.height = height;
