@@ -87,7 +87,7 @@ function pickerSetup() {
     requestAnimationFrame(loop);
     
     picker.onChange((color) => {
-        if (network && (picker.isMouseDown || picker.isTouched) {
+        if (network && (picker.isMouseDown || picker.isTouched)) {
             let background01 = getRgb01(color);
             let textColor = defineTextColor(background01, network) == 'dark' ? 'white' : 'black';
             cn.style.color = textColor;
