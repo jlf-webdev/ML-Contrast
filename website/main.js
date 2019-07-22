@@ -1,10 +1,10 @@
-import {dataset} from "./rgbDataset.js";
-import {trainBrain} from "./brainTraining.js";
+import {dataset} from "./default/rgbDataset.js";
+import {trainBrain} from "./brain/brainTraining.js";
 import {getRgb01} from "./rgb01.js";
 import {rgb01} from "./old_rgb01.js";
-import {defineTextColor} from "./brainResolve.js";
+import {defineTextColor} from "./brain/brainResolve.js";
 import {Picker} from "./color-picker/color-picker.js"
-import {rules} from "./rules-display/rules.js"
+import {rules} from "./default/rules.js"
 
 const cn = document.querySelector("#container");
 const body = document.querySelector('#body');
@@ -87,7 +87,7 @@ function pickerSetup() {
     requestAnimationFrame(loop);
     
     picker.onChange((color) => {
-        if (network && picker.isMouseDown) {
+        if (network && (picker.isMouseDown || picker.isTouched) {
             let background01 = getRgb01(color);
             let textColor = defineTextColor(background01, network) == 'dark' ? 'white' : 'black';
             cn.style.color = textColor;
